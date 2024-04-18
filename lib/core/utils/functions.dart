@@ -6,7 +6,7 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:image/image.dart' as img;
 import 'package:image_cropper/image_cropper.dart';
@@ -234,44 +234,44 @@ List<Widget> customActions(context) {
   ];
 }
 
-Future<LatLng> getUserMapLocation(
-    GoogleMapController? googleMapController) async {
-  await Geolocator.requestPermission();
+// Future<LatLng> getUserMapLocation(
+//     GoogleMapController? googleMapController) async {
+//   await Geolocator.requestPermission();
+//
+//   Position position = await Geolocator.getCurrentPosition(
+//     desiredAccuracy: LocationAccuracy.high,
+//   );
+//   double lat = position.latitude;
+//   double long = position.longitude;
+//   LatLng location = LatLng(lat, long);
+//
+//   googleMapController?.animateCamera(CameraUpdate.newLatLngZoom(location, 14));
+//   return location;
+// }
+//
+// Future<String> getLocationName(context) async {
+//   LatLng location = await getUserMapLocation(null);
+//   List<Placemark> list = await placemarkFromCoordinates(
+//       location.latitude, location.longitude,
+//       localeIdentifier:
+//           LocaleCubit.get(context).state.languageCode == 'en' ? 'en' : 'ar');
+//
+//   return '${list[0].subThoroughfare} ${list[0].thoroughfare}, ${list[0].subLocality}, ${list[0].administrativeArea}, ${list[0].country}';
+// }
+//
+// Place? place;
 
-  Position position = await Geolocator.getCurrentPosition(
-    desiredAccuracy: LocationAccuracy.high,
-  );
-  double lat = position.latitude;
-  double long = position.longitude;
-  LatLng location = LatLng(lat, long);
-
-  googleMapController?.animateCamera(CameraUpdate.newLatLngZoom(location, 14));
-  return location;
-}
-
-Future<String> getLocationName(context) async {
-  LatLng location = await getUserMapLocation(null);
-  List<Placemark> list = await placemarkFromCoordinates(
-      location.latitude, location.longitude,
-      localeIdentifier:
-          LocaleCubit.get(context).state.languageCode == 'en' ? 'en' : 'ar');
-
-  return '${list[0].subThoroughfare} ${list[0].thoroughfare}, ${list[0].subLocality}, ${list[0].administrativeArea}, ${list[0].country}';
-}
-
-Place? place;
-
-Future<String> updateMapLocation(context, LatLng location) async {
-  String _host = 'https://maps.google.com/maps/api/geocode/json';
-  String mapApiKey = 'AIzaSyBaUmZqLrBQj3LQHChTJOHJuqvDbg_lbAU';
-  final url =
-      '$_host?key=$mapApiKey&language=${LocaleCubit.get(context).state.languageCode == 'en' ? 'en' : 'ar'}&latlng=${location.latitude},${location.longitude}';
-  var response = await http.get(Uri.parse(url));
-  Map data = jsonDecode(response.body);
-  final Place place = Place.fromJson(jsonDecode(response.body));
-
-  return '${place.results![0].formattedAddress}';
-}
+// Future<String> updateMapLocation(context, LatLng location) async {
+//   String _host = 'https://maps.google.com/maps/api/geocode/json';
+//   String mapApiKey = 'AIzaSyBaUmZqLrBQj3LQHChTJOHJuqvDbg_lbAU';
+//   final url =
+//       '$_host?key=$mapApiKey&language=${LocaleCubit.get(context).state.languageCode == 'en' ? 'en' : 'ar'}&latlng=${location.latitude},${location.longitude}';
+//   var response = await http.get(Uri.parse(url));
+//   Map data = jsonDecode(response.body);
+//   final Place place = Place.fromJson(jsonDecode(response.body));
+//
+//   return '${place.results![0].formattedAddress}';
+// }
 
 void cancelCurrentRequest() => diInstance<ApiConsumer>().cancelRequest();
 final ImagePicker imagePicker = ImagePicker();
