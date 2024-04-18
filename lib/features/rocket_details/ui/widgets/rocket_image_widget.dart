@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-import '../screens/rocket_details.dart';
 import 'details_page_app_bar.dart';
 
 class RocketImageWidget extends StatelessWidget {
