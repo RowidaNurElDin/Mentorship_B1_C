@@ -10,7 +10,7 @@ class ApiService {
     final networkInfo = getIt<InternetConnectionChecker>();
     if (await networkInfo.hasConnection) {
       try {
-        final T response = await fun.call();
+        T response = await fun.call();        
         return right(response);
       } on DioException catch (e) {
         return left(DioErrorFailure(message: e.message));

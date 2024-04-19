@@ -10,17 +10,27 @@ class GetAllRocketsRepository{
   GetAllRocketsRepository();
 
   Future<Either<Failure, List<AllRocketsResponse>?>> getAllRockets() async {
-    return ApiService.callMethod< List<AllRocketsResponse>?>(() async {
-        await DioFactory.dio!.get(ApiConstants.apiBaseUrl+ApiConstants.getAllRocketsEndPoint)
-        .then((value){
-          if(value.statusCode==200){
+    return await DioFactory.dio!.get(ApiConstants.apiBaseUrl+ApiConstants.getAllRocketsEndPoint)
+    .then((value){
+     if(value.statusCode==200){
     
-              return (value.data as List).map((e) => AllRocketsResponse.fromJson(e)).toList();
-          }
-          else{
-            return Failure(message: value.data['message']);
-          }
-        });
-    });
+          return right((value.data as List).map((e) => AllRocketsResponse.fromJson(e)).toList());
+           }
+         else{
+           return Left(Failure(message: value.data['message']));
+           }
+       });
+    // return ApiService.callMethod< List<AllRocketsResponse>?>(() async {
+    //     await DioFactory.dio!.get(ApiConstants.apiBaseUrl+ApiConstants.getAllRocketsEndPoint)
+    //     .then((value){
+    //       if(value.statusCode==200){
+    
+    //           return (value.data as List).map((e) => AllRocketsResponse.fromJson(e)).toList();
+    //       }
+    //       else{
+    //         return Failure(message: value.data['message']);
+    //       }
+    //     });
+    // });
   }
 }
