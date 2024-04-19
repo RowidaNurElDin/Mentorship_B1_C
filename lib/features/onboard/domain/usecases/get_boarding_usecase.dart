@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-
-import '../../../../core/errors/failure.dart';
+import '../../../../core/networking/errors/failure.dart';
 import '../../../../core/usecases/base_usecase.dart';
 import '../../../../core/usecases/no_param.dart';
+import '../entities/boarding_item.dart';
 import '../repositories/boarding_repository.dart';
 
 class GetBoardingUsecase extends BaseUseCase<dynamic, NoParams> {

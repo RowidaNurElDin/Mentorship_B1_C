@@ -10,7 +10,6 @@ import 'config/routes/routes_manager.dart';
 import 'config/theme/themes_manager.dart';
 import 'core/helpers/colors_manager.dart';
 import 'core/helpers/strings_manager.dart';
-import 'core/locale/presentation/cubit/locale_cubit.dart';
 import 'core/themes/presentation/cubit/theme_cubit.dart';
 import 'injection_container.dart';
 
@@ -25,9 +24,6 @@ class SpacexApp extends StatelessWidget {
       providers: [
         BlocProvider<ThemeCubit>(
           create: (context) => diInstance<ThemeCubit>()..getSavedTheme(),
-        ),
-        BlocProvider<LocaleCubit>(
-          create: (context) => diInstance<LocaleCubit>()..getSavedLang(),
         ),
         BlocProvider<OnboardCubit>(
           create: (context) => diInstance<OnboardCubit>()..getBoarding(),
@@ -60,7 +56,6 @@ class SpacexApp extends StatelessWidget {
           child: Builder(
             builder: (context) {
               final themeState = context.watch<ThemeCubit>().state;
-              final localeState = context.watch<LocaleCubit>().state;
 
               final SystemUiOverlayStyle overlayStyle =
                   themeState == ThemeMode.dark
@@ -74,10 +69,10 @@ class SpacexApp extends StatelessWidget {
               return AnnotatedRegion<SystemUiOverlayStyle>(
                 value: overlayStyle,
                 child: MaterialApp(
-                  darkTheme:
-                      Themes.getDarkTheme(language: localeState.languageCode),
-                  theme:
-                      Themes.getLightTheme(language: localeState.languageCode),
+                  // darkTheme:
+                  //     Themes.getDarkTheme(language: localeState.languageCode),
+                  // theme:
+                  //     Themes.getLightTheme(language: localeState.languageCode),
                   themeMode: themeState,
                   debugShowCheckedModeBanner: false,
                   title: StringsManager.appName,
@@ -89,7 +84,7 @@ class SpacexApp extends StatelessWidget {
                   supportedLocales: AppLocalizationsSetup.supportedLocales,
                   localeResolutionCallback:
                       AppLocalizationsSetup.localeResolutionCallback,
-                  locale: localeState,
+                  // locale: localeState,
                 ),
               );
             },

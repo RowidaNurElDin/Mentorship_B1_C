@@ -21,8 +21,7 @@ import '../cache/cache_consumer.dart';
 import '../cache/cache_keys.dart';
 import '../helpers/strings_manager.dart';
 import '../helpers/values_manager.dart';
-import '../locale/presentation/cubit/locale_cubit.dart';
-import '../model/place.dart';
+// import '../model/place.dart';
 import '../networking/api_consumer.dart';
 import '../themes/presentation/cubit/theme_cubit.dart';
 import '../widgets/loading.dart';
@@ -63,12 +62,12 @@ double getScreenHight() {
 //   return AppLocalizations.of(context)!.translate(key) ?? 'Error : not found';
 // }
 
-String getLocaleStringFrom(
-    {required String arabic,
-    required String english,
-    required BuildContext context}) {
-  return LocaleCubit.get(context).state.languageCode == 'en' ? english : arabic;
-}
+// String getLocaleStringFrom(
+//     {required String arabic,
+//     required String english,
+//     required BuildContext context}) {
+//   return LocaleCubit.get(context).state.languageCode == 'en' ? english : arabic;
+// }
 Color? getLocaleColorFrom(
     {required Color? light,
     required Color? dark,
@@ -76,12 +75,12 @@ Color? getLocaleColorFrom(
   return ThemeCubit.get(context).state.name == 'light' ? light : dark;
 }
 
-dynamic getLocaleFrom(
-    {required dynamic arabic,
-    required dynamic english,
-    required BuildContext context}) {
-  return LocaleCubit.get(context).state.languageCode == 'en' ? english : arabic;
-}
+// dynamic getLocaleFrom(
+//     {required dynamic arabic,
+//     required dynamic english,
+//     required BuildContext context}) {
+//   return LocaleCubit.get(context).state.languageCode == 'en' ? english : arabic;
+// }
 
 void wrapper(context) {
   CacheConsumer cacheConsumer = diInstance<CacheConsumer>();

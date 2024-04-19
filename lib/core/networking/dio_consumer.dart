@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 
 import '../cache/cache_consumer.dart';
 import '../cache/cache_keys.dart';
-import '../errors/exceptions.dart';
 import 'api_consumer.dart';
 import 'app_interceptor.dart';
+import 'errors/exceptions.dart';
 
 class DioConsumer implements ApiConsumer {
   final Dio dio;

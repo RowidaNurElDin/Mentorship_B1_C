@@ -37,8 +37,7 @@ class RoutesManager {
           SlideTransition(
               position: Tween<Offset>(
                       begin: Offset(
-                          getLocaleFrom(
-                              arabic: 1.0, english: -1.0, context: context),
+                         -1,
                           0),
                       end: Offset.zero)
                   .animate(animation),

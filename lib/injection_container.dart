@@ -5,12 +5,6 @@ import 'package:mentoship_rockets_discovries_project/features/onboard/presentati
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/cache/cache_consumer.dart';
 import 'core/cache/cache_consumer_impl.dart';
-import 'core/locale/data/datasources/lang_local_datasource.dart';
-import 'core/locale/data/repositories/lang_repository_impl.dart';
-import 'core/locale/domain/repositories/lang_repository.dart';
-import 'core/locale/domain/usecases/change_locale.dart';
-import 'core/locale/domain/usecases/get_saved_lang.dart';
-import 'core/locale/presentation/cubit/locale_cubit.dart';
 import 'core/networking/api_consumer.dart';
 import 'core/networking/app_interceptor.dart';
 import 'core/networking/dio_consumer.dart';
@@ -33,7 +27,7 @@ final diInstance = GetIt.instance;
 Future<void> initAppModule() async {
   //! Features
   initThemeModule();
-  initLocaleModule();
+  // initLocaleModule();
   initBoardingModule();
 
   //! Core
@@ -83,25 +77,6 @@ Future<void> initThemeModule() async {
       () => ThemeLocalDataSourceImpl(cacheConsumer: diInstance()));
 }
 
-Future<void> initLocaleModule() async {
-  //?Cubits
-  diInstance.registerFactory<LocaleCubit>(() => LocaleCubit(
-      getSavedLangUseCase: diInstance(), changeLocaleUseCase: diInstance()));
-
-  //?Use cases
-  diInstance.registerLazySingleton<GetSavedLangUseCase>(
-      () => GetSavedLangUseCase(localeRepository: diInstance()));
-  diInstance.registerLazySingleton<ChangeLocaleUseCase>(
-      () => ChangeLocaleUseCase(localeRepository: diInstance()));
-
-  //?Repositories
-  diInstance.registerLazySingleton<LocaleRepository>(
-      () => LocaleRepositoryImpl(localeLocalDataSource: diInstance()));
-
-  //?Data Sources
-  diInstance.registerLazySingleton<LocaleLocalDataSource>(
-      () => LocaleLocalDataSourceImpl(cacheConsumer: diInstance()));
-}
 
 Future<void> initBoardingModule() async {
   if (diInstance.isRegistered<BoardingDataSource>()) return;

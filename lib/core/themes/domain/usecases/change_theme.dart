@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../../core/errors/failure.dart';
 import '../../../../../core/usecases/base_usecase.dart';
+import '../../../networking/errors/failure.dart';
 import '../repositories/theme_repository.dart';
 
 class ChangeThemeUseCase implements BaseUseCase<bool, String> {

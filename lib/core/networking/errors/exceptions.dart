@@ -1,7 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:mentoship_rockets_discovries_project/spacex_app.dart';
 
-import '../utils/functions.dart';
+import '../../utils/functions.dart';
+
 
 class ServerException extends Equatable implements Exception {
   final String? message;
@@ -43,11 +44,8 @@ class InternalServerErrorException extends ServerException {
 }
 
 class NoInternetConnectionException extends ServerException {
-  NoInternetConnectionException([message])
-      : super(getLocaleStringFrom(
-            arabic: 'لا يوجد اتصال بالانترنت',
-            english: 'No Internet Connection',
-            context: SpacexApp.navigatorKey.currentContext!));
+  const NoInternetConnectionException([message])
+      : super('No Internet Connection');
 }
 
 class CacheException implements Exception {

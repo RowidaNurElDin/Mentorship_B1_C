@@ -1,13 +1,7 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mentoship_rockets_discovries_project/core/networking/endpoints.dart';
 import 'package:mentoship_rockets_discovries_project/features/onboard/data/models/launcher_model.dart';
-
 import '../../../../core/cache/cache_consumer.dart';
-import '../../../../core/cache/cache_keys.dart';
 import '../../../../core/usecases/no_param.dart';
 import '../../domain/usecases/get_boarding_usecase.dart';
 
@@ -44,7 +38,7 @@ class OnboardCubit extends Cubit<OnboardState> {
 
   LauncherModel launcherModel = LauncherModel();
 
-  Future<void> getBoarding() async {
+  Future getBoarding() async {
     emit(GetBoardingLoadingState());
     final result = await _getBoardingUsecase.call(NoParams());
     result.fold((l) => emit(GetBoardingFailedState(l.message ?? 'Error')), (r) {

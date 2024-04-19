@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
-
-import '../../../../../core/errors/exceptions.dart';
-import '../../../../../core/errors/failure.dart';
+import '../../../networking/errors/exceptions.dart';
+import '../../../networking/errors/failure.dart';
 import '../../domain/repositories/theme_repository.dart';
 import '../datasources/theme_local_datasource.dart';
 

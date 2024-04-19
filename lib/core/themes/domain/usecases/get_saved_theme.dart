@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
+import '../../../networking/errors/failure.dart';
 import '../repositories/theme_repository.dart';
-
-import '../../../../../core/errors/failure.dart';
 import '../../../../../core/usecases/base_usecase.dart';
 import '../../../../../core/usecases/no_param.dart';
 
