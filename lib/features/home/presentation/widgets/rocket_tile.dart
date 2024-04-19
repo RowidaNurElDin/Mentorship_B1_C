@@ -6,7 +6,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RocketTile extends StatelessWidget {
-  const RocketTile({super.key});
+  final String? date;
+  final String? name;
+  final String? imageUrl;
+  const RocketTile({super.key, this.date , this.name, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +33,8 @@ class RocketTile extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.r),
-            image: const DecorationImage(
-            image: AssetImage('assets/images/rockets.jpg'),
+            image: DecorationImage(
+            image: NetworkImage(imageUrl!),
              fit: BoxFit.cover),
           ),
         ),
@@ -39,7 +42,7 @@ class RocketTile extends StatelessWidget {
           bottom: 50.h,
           left: 10.w,
           child: Text(
-            "Date here", style: TextStyle(
+            date!, style: TextStyle(
               fontSize: 20.sp,
               color: Color.fromARGB(255, 94, 157, 208),
               fontWeight: FontWeight.bold
@@ -51,7 +54,7 @@ class RocketTile extends StatelessWidget {
           bottom: 5,
           left: 10.w,
           child: Text(
-            "ROCKET NAME", style: TextStyle(
+            name!, style: TextStyle(
               fontSize: 25.sp,
               color: Colors.white
             ),
