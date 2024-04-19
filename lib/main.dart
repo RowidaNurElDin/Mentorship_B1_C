@@ -7,5 +7,3 @@ void main() {
   setUpDependencyInjections();
   runApp(const SpacexApp());
 }
-
-
