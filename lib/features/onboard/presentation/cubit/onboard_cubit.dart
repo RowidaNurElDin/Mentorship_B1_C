@@ -1,7 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mentoship_rockets_discovries_project/core/networking/endpoints.dart';
 import 'package:mentoship_rockets_discovries_project/features/onboard/data/models/launcher_model.dart';
+import 'package:mentoship_rockets_discovries_project/features/onboard/data/models/rockets_model.dart';
 import '../../../../core/cache/cache_consumer.dart';
+import '../../../../core/cache/cache_keys.dart';
 import '../../../../core/usecases/no_param.dart';
 import '../../domain/usecases/get_boarding_usecase.dart';
 
@@ -37,13 +41,45 @@ class OnboardCubit extends Cubit<OnboardState> {
   }
 
   LauncherModel launcherModel = LauncherModel();
+  RocketsModel rocketsModel = RocketsModel();
 
   Future getBoarding() async {
     emit(GetBoardingLoadingState());
-    final result = await _getBoardingUsecase.call(NoParams());
-    result.fold((l) => emit(GetBoardingFailedState(l.message ?? 'Error')), (r) {
-      // launcherModel = r;
+
+
+
+    var headers = {
+      'accept': '*/*',
+      'Authorization': 'Bearer ${_cacheConsumer.getData<String?>(key: CacheKeys.token, defaultValue: null)}',
+      'Content-Type': 'application/json',
+      'Accept-Language':
+      _cacheConsumer.getData(key: CacheKeys.locale, defaultValue: 'en') ==
+          'ar'
+          ? 'Arabic'
+          : 'English',
+    };
+    var dio = Dio();
+    var response = await dio.request(
+      '${EndPoints.baseUrl}${EndPoints.launches}',
+      options: Options(
+        method: 'GET',
+        headers: headers,
+      ),
+    );
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      launcherModel = LauncherModel.fromJson(response.data[0]);
       emit(GetBoardingSuccessState());
-    });
+    }
+    else if(response.statusCode! >= 401) {
+      emit(GetBoardingFailedState(response.data['message']));
+    }
+
+    // final result = await _getBoardingUsecase.call(NoParams());
+    // result.fold((l) => emit(GetBoardingFailedState(l.message ?? 'Error')), (r) {
+    //   // launcherModel = r;
+    //   rocketsModel = r;
+    //   // print(r);
+    //   emit(GetBoardingSuccessState());
+    // });
   }
 }
