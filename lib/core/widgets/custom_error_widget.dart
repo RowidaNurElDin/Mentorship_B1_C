@@ -63,7 +63,8 @@ class CustomErrorWidget extends StatelessWidget {
                   AppSize.s50.spaceH,
                   CustomButton(
                     onTap: onTap,
-                    text: getLocaleString(StringsManager.tryAgain, context),
+                    // text: getLocaleString(StringsManager.tryAgain, context),
+                    text: StringsManager.tryAgain,
                   ),
                 ],
               ),
@@ -79,7 +80,8 @@ class CustomErrorWidget extends StatelessWidget {
                 AppSize.s50.spaceH,
                 CustomButton(
                   onTap: onTap,
-                  text: getLocaleString(StringsManager.tryAgain, context),
+                  // text: getLocaleString(StringsManager.tryAgain, context),
+                  text: StringsManager.tryAgain,
                 ),
               ],
             )

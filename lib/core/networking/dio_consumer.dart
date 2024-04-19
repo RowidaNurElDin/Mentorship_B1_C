@@ -41,6 +41,7 @@ class DioConsumer implements ApiConsumer {
 
       return response;
     } on DioException catch (e) {
+      print(e);
       throw _handelDioError(e)!;
     } on Exception catch (e) {
       throw ServerException(e.toString());

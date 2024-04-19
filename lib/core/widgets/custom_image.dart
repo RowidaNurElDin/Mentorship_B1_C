@@ -17,6 +17,7 @@ class CustomImage extends StatelessWidget {
   final double? width;
   final double? height;
   final BoxFit? fit;
+  final Color? color;
   const CustomImage({
     Key? key,
     this.loadingColor,
@@ -28,6 +29,7 @@ class CustomImage extends StatelessWidget {
     this.width,
     this.height,
     this.fit,
+    this.color
   }) : super(key: key);
 
   @override
@@ -97,6 +99,7 @@ class CustomImage extends StatelessWidget {
       height: height,
       width: width,
       fit: fit ?? BoxFit.fill,
+      color: color,
       errorBuilder: (BuildContext context, Object object, StackTrace? track) {
         return Image.asset(
           AssetsManager.placeholder,

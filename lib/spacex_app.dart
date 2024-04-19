@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mentoship_rockets_discovries_project/features/onboard/presentation/cubit/onboard_cubit.dart';
 
 import 'config/locale/app_localizations_setup.dart';
 import 'config/routes/routes.dart';
@@ -27,6 +28,9 @@ class SpacexApp extends StatelessWidget {
         ),
         BlocProvider<LocaleCubit>(
           create: (context) => diInstance<LocaleCubit>()..getSavedLang(),
+        ),
+        BlocProvider<OnboardCubit>(
+          create: (context) => diInstance<OnboardCubit>()..getBoarding(),
         ),
         // BlocProvider<SetupProfileCubit>(
         //   create: (context) => SetupProfileCubit(

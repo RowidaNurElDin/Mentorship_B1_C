@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:mentoship_rockets_discovries_project/features/onboard/presentation/cubit/onboard_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/cache/cache_consumer.dart';
 import 'core/cache/cache_consumer_impl.dart';
@@ -21,6 +22,10 @@ import 'core/themes/domain/repositories/theme_repository.dart';
 import 'core/themes/domain/usecases/change_theme.dart';
 import 'core/themes/domain/usecases/get_saved_theme.dart';
 import 'core/themes/presentation/cubit/theme_cubit.dart';
+import 'features/onboard/data/datasources/boarding_datasource.dart';
+import 'features/onboard/data/repositories/boarding_repository_impl.dart';
+import 'features/onboard/domain/repositories/boarding_repository.dart';
+import 'features/onboard/domain/usecases/get_boarding_usecase.dart';
 
 
 final diInstance = GetIt.instance;
@@ -29,12 +34,7 @@ Future<void> initAppModule() async {
   //! Features
   initThemeModule();
   initLocaleModule();
-  // initAuthModule();
-  // initUploadImageModule();
-  // initTaskModule();
-  // initNoteModule();
-  // initSetupProfile();
-  // initCategoriesModule();
+  initBoardingModule();
 
   //! Core
   diInstance.registerLazySingleton<NetworkInfo>(
@@ -103,18 +103,23 @@ Future<void> initLocaleModule() async {
       () => LocaleLocalDataSourceImpl(cacheConsumer: diInstance()));
 }
 
-// Future<void> initBoardingModule() async {
-//   if (diInstance.isRegistered<BoardingDataSource>()) return;
-//
-//   //Use cases
-//   diInstance.registerLazySingleton<GetBoardingUsecase>(
-//       () => GetBoardingUsecase(diInstance()));
-//
-//   //Repositories
-//   diInstance.registerLazySingleton<BoardingRepository>(
-//       () => BoardingRepositoryImpl(diInstance()));
-//
-//   //Data Sources
-//   diInstance.registerLazySingleton<BoardingDataSource>(
-//       () => BoardingDataSourceImpl(diInstance()));
-// }
+Future<void> initBoardingModule() async {
+  if (diInstance.isRegistered<BoardingDataSource>()) return;
+
+  diInstance.registerFactory<OnboardCubit>(() => OnboardCubit(
+    diInstance(),
+    diInstance(),
+  ));
+
+  // Use cases
+  diInstance.registerLazySingleton<GetBoardingUsecase>(
+      () => GetBoardingUsecase(diInstance()));
+
+  // Repositories
+  diInstance.registerLazySingleton<BoardingRepository>(
+      () => BoardingRepositoryImpl(diInstance()));
+
+  // Data Sources
+  diInstance.registerLazySingleton<BoardingDataSource>(
+      () => BoardingDataSourceImpl(diInstance()));
+}

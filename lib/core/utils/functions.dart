@@ -59,9 +59,9 @@ double getScreenHight() {
       AppBar().preferredSize.height;
 }
 
-String getLocaleString(String key, BuildContext context) {
-  return AppLocalizations.of(context)!.translate(key) ?? 'Error : not found';
-}
+// String getLocaleString(String key, BuildContext context) {
+//   return AppLocalizations.of(context)!.translate(key) ?? 'Error : not found';
+// }
 
 String getLocaleStringFrom(
     {required String arabic,

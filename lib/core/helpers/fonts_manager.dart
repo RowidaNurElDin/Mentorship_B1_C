@@ -18,6 +18,10 @@ class FontWeightManager {
 }
 
 class FontStyles {
+  static TextStyle getRobotoStyle({required String language}) {
+    return GoogleFonts.roboto(fontWeight: FontWeightManager.regular);
+  }
+
   static TextStyle getThinStyle() {
     return const TextStyle(
         fontFamily: FontConstants.fontFamily,

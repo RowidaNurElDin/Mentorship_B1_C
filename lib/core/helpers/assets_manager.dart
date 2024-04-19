@@ -6,6 +6,7 @@ class AssetsManager {
   static const String splash = '$svgPath/splash.svg';
   static const String smallLogoSvg = '$svgPath/small logo.svg';
   static const String logoSvg = '$svgPath/appLogo.svg';
+  static const String logo = '$imagesPath/spaceX_logo.png';
   static const String logoMarkSvg = '$svgPath/logoMark.svg';
   static const String googleSvg = '$svgPath/google.svg';
   static const String emailIcon = '$svgPath/email.svg';

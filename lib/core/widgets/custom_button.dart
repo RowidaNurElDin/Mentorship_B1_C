@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mentoship_rockets_discovries_project/core/helpers/responsive_manager.dart';
 
 import '../../config/theme/themes_manager.dart';
 import '../helpers/colors_manager.dart';
+import '../helpers/fonts_manager.dart';
 import '../helpers/strings_manager.dart';
 import '../helpers/values_manager.dart';
 import '../themes/presentation/cubit/theme_cubit.dart';
@@ -176,8 +179,7 @@ class CustomButton extends StatelessWidget {
           child: Material(
             color: ColorsManager.transparent,
             child: InkWell(
-              highlightColor:
-                  clickable ? null : ColorsManager.greyBoldColor700,
+              highlightColor: clickable ? null : ColorsManager.greyBoldColor700,
               splashColor: clickable
                   ? ColorsManager.whiteLightColor
                   : ColorsManager.greyLightColor300,
@@ -191,7 +193,7 @@ class CustomButton extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsetsDirectional.symmetric(
                   vertical: hPadding ?? PaddingValues.p10.rh,
-                  horizontal: wPadding ?? PaddingValues.p15.rw,
+                  horizontal: wPadding ?? PaddingValues.p24.rw,
                 ),
                 child: child ??
                     Row(
@@ -201,19 +203,25 @@ class CustomButton extends StatelessWidget {
                       crossAxisAlignment:
                           rowCrossAlignment ?? CrossAxisAlignment.center,
                       children: [
-                        if (icon != null && iconAlignment == IconAlignment.left)
+                        if (icon != null &&
+                            iconAlignment == IconAlignment.right)
                           icon!,
+                        if (icon != null &&
+                            iconAlignment == IconAlignment.right)
+                          (iconSpace ?? AppSize.s15).spaceW,
+                        Text(
+                          overflow: TextOverflow.ellipsis,
+                          text!,
+                          style: GoogleFonts.roboto(
+                            fontWeight: FontWeightManager.medium,
+                          ).copyWith(
+                              fontSize: FontSize.f22,
+                              color: ColorsManager.blackColor),
+                          // textStyle: defaultTextStyle
+                        ),
                         if (icon != null && iconAlignment == IconAlignment.left)
                           (iconSpace ?? AppSize.s15).spaceW,
-                        CustomText(
-                            overflow: TextOverflow.ellipsis,
-                            text!,
-                            textStyle: defaultTextStyle),
-                        if (icon != null &&
-                            iconAlignment == IconAlignment.right)
-                          (iconSpace ?? AppSize.s15).spaceW,
-                        if (icon != null &&
-                            iconAlignment == IconAlignment.right)
+                        if (icon != null && iconAlignment == IconAlignment.left)
                           icon!,
                       ],
                     ),

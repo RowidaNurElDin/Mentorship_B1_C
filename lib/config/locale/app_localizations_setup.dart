@@ -12,7 +12,7 @@ class AppLocalizationsSetup {
 
   static const Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates =
       [
-    AppLocalizations.delegate,
+    // AppLocalizations.delegate,
     FlutterQuillLocalizations.delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,

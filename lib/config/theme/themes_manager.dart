@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mentoship_rockets_discovries_project/core/helpers/responsive_manager.dart';
 
 import '../../core/helpers/colors_manager.dart';
@@ -133,6 +134,10 @@ class Themes {
         fontSize: FontSize.f14.rf,
       ),
       bodySmall: FontStyles.getRegularStyle(language: language).copyWith(
+        color: ColorsManager.greyMediumColor500,
+        fontSize: FontSize.f12.rf,
+      ),
+      labelLarge:  FontStyles.getRobotoStyle(language: language).copyWith(
         color: ColorsManager.greyMediumColor500,
         fontSize: FontSize.f12.rf,
       ),
