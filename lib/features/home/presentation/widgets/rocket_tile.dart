@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class RocketTile extends StatelessWidget {
   final String? date;
@@ -39,10 +40,10 @@ class RocketTile extends StatelessWidget {
           ),
         ),
          Positioned(
-          bottom: 50.h,
+          bottom: 35.h,
           left: 10.w,
           child: Text(
-            date!, style: TextStyle(
+          DateFormat('MMM dd, yyyy').format(DateTime.parse(date!)).toString() , style: TextStyle(
               fontSize: 20.sp,
               color: Color.fromARGB(255, 94, 157, 208),
               fontWeight: FontWeight.bold

@@ -14,6 +14,7 @@ class AllRocketsResponse{
   Engines? engines;
   LandingLegs? landingLegs;
   List<PayloadWeights>? payloadWeights;
+  @JsonKey(name: 'flickr_images')
   List<String>? flickrImages;
   String? name;
   String? type;
@@ -22,6 +23,7 @@ class AllRocketsResponse{
   int? boosters;
   int? costPerLaunch;
   int? successRatePct;
+  @JsonKey(name: 'first_flight')
   String? firstFlight;
   String? country;
   String? company;

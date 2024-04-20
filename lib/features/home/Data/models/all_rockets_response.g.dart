@@ -32,7 +32,7 @@ AllRocketsResponse _$AllRocketsResponseFromJson(Map<String, dynamic> json) =>
       payloadWeights: (json['payloadWeights'] as List<dynamic>?)
           ?.map((e) => PayloadWeights.fromJson(e as Map<String, dynamic>))
           .toList(),
-      flickrImages: (json['flickrImages'] as List<dynamic>?)
+      flickrImages: (json['flickr_images'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       name: json['name'] as String?,
@@ -42,7 +42,7 @@ AllRocketsResponse _$AllRocketsResponseFromJson(Map<String, dynamic> json) =>
       boosters: json['boosters'] as int?,
       costPerLaunch: json['costPerLaunch'] as int?,
       successRatePct: json['successRatePct'] as int?,
-      firstFlight: json['firstFlight'] as String?,
+      firstFlight: json['first_flight'] as String?,
       country: json['country'] as String?,
       company: json['company'] as String?,
       wikipedia: json['wikipedia'] as String?,
@@ -60,7 +60,7 @@ Map<String, dynamic> _$AllRocketsResponseToJson(AllRocketsResponse instance) =>
       'engines': instance.engines,
       'landingLegs': instance.landingLegs,
       'payloadWeights': instance.payloadWeights,
-      'flickrImages': instance.flickrImages,
+      'flickr_images': instance.flickrImages,
       'name': instance.name,
       'type': instance.type,
       'active': instance.active,
@@ -68,7 +68,7 @@ Map<String, dynamic> _$AllRocketsResponseToJson(AllRocketsResponse instance) =>
       'boosters': instance.boosters,
       'costPerLaunch': instance.costPerLaunch,
       'successRatePct': instance.successRatePct,
-      'firstFlight': instance.firstFlight,
+      'first_flight': instance.firstFlight,
       'country': instance.country,
       'company': instance.company,
       'wikipedia': instance.wikipedia,
