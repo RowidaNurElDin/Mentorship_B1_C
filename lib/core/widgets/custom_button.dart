@@ -1,17 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mentoship_rockets_discovries_project/core/helpers/responsive_manager.dart';
-
-import '../../config/theme/themes_manager.dart';
 import '../helpers/colors_manager.dart';
 import '../helpers/fonts_manager.dart';
-import '../helpers/strings_manager.dart';
 import '../helpers/values_manager.dart';
-import '../themes/presentation/cubit/theme_cubit.dart';
-import '../utils/functions.dart';
-import '/core/widgets/custom_text.dart';
+import '../theme/themes_manager.dart';
 import 'space.dart';
 
 enum IconAlignment { left, right }
@@ -93,7 +87,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeState = context.watch<ThemeCubit>().state;
+    // final themeState = context.watch<ThemeCubit>().state;
 
     TextStyle defaultTextStyle = textStyle ??
         ((isRegular)

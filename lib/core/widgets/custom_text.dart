@@ -1,11 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mentoship_rockets_discovries_project/core/helpers/responsive_manager.dart';
 import '../helpers/colors_manager.dart';
 import '../helpers/fonts_manager.dart';
-import '../themes/presentation/cubit/theme_cubit.dart';
-import '/config/theme/themes_manager.dart';
+import '../theme/themes_manager.dart';
 
 class CustomText extends StatelessWidget {
   final String text;
@@ -38,33 +36,23 @@ class CustomText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeState = context.watch<ThemeCubit>().state;
 
     TextStyle defaultTextStyle = textStyle ??
         ((isRegular)
             ? ThemesManager.blackWhiteRegular(context).copyWith(
-                color: color ??
-                    (themeState == ThemeMode.light
-                        ? ColorsManager.greyMediumColor500
-                        : ColorsManager.whiteExtraColor),
+                color: color,
                 fontSize: fontSize,
                 overflow: overflow,
                 height: height)
             : (isSemiBold)
                 ? ThemesManager.blackWhiteSemiBold(context).copyWith(
-                    color: color ??
-                        (themeState == ThemeMode.light
-                            ? ColorsManager.greyMediumColor500
-                            : ColorsManager.whiteExtraColor),
+                    color: color,
                     fontSize: fontSize,
                     overflow: overflow,
                     height: height,
                   )
                 : ThemesManager.blackWhiteMedium(context).copyWith(
-                    color: color ??
-                        (themeState == ThemeMode.light
-                            ? ColorsManager.greyMediumColor500
-                            : ColorsManager.whiteExtraColor),
+                    color: color ,
                     fontSize: fontSize,
                     overflow: overflow,
                     height: height,
