@@ -75,8 +75,6 @@ abstract class $RocketStateCopyWith<$Res> {
       String message,
       List<AllRocketsResponse>? rockets,
       AllRocketsResponse? rocket});
-
-  $AllRocketsResponseCopyWith<$Res>? get rocket;
 }
 
 /// @nodoc
@@ -116,18 +114,6 @@ class _$RocketStateCopyWithImpl<$Res, $Val extends RocketState>
               as AllRocketsResponse?,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AllRocketsResponseCopyWith<$Res>? get rocket {
-    if (_value.rocket == null) {
-      return null;
-    }
-
-    return $AllRocketsResponseCopyWith<$Res>(_value.rocket!, (value) {
-      return _then(_value.copyWith(rocket: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -143,9 +129,6 @@ abstract class _$$InitialImplCopyWith<$Res>
       String message,
       List<AllRocketsResponse>? rockets,
       AllRocketsResponse? rocket});
-
-  @override
-  $AllRocketsResponseCopyWith<$Res>? get rocket;
 }
 
 /// @nodoc
@@ -227,12 +210,16 @@ class _$InitialImpl implements _Initial {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._rockets, _rockets) &&
-            (identical(other.rocket, rocket) || other.rocket == rocket));
+            const DeepCollectionEquality().equals(other.rocket, rocket));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, message,
-      const DeepCollectionEquality().hash(_rockets), rocket);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      message,
+      const DeepCollectionEquality().hash(_rockets),
+      const DeepCollectionEquality().hash(rocket));
 
   @JsonKey(ignore: true)
   @override

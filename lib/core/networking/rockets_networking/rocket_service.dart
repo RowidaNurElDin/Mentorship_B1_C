@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:mentoship_rockets_discovries_project/core/networking/rockets_networking/rocket_provider.dart';
 
-import '../../../features/rocket_details/data/models/all_rockets_response.dart';
+import '../../../features/home/Data/models/all_rockets_response.dart';
 import '../../error/exceptions.dart';
 import '../../helpers/failure_helpers/failure_handler.dart';
 

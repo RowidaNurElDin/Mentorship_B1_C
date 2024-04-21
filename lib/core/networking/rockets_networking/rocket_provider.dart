@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 
-import '../../../features/rocket_details/data/models/all_rockets_response.dart';
+import '../../../features/home/Data/models/all_rockets_response.dart';
 
 part 'rocket_provider.g.dart';
 

@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/networking/rockets_networking/rocket_service.dart';
-import '../../data/models/all_rockets_response.dart';
+import '../../../home/Data/models/all_rockets_response.dart';
 
 part 'rocket_cubit.freezed.dart';
 

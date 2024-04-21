@@ -28,7 +28,7 @@ class _HomrScreenState extends State<HomeScreen> {
             itemBuilder: (context, index) {
               return RocketTile(
                 name: state.allRockets[index].name,
-                date: state.allRockets[index].firstFlight??"",
+                date: "",
                 imageUrl: state.allRockets[index].flickrImages?[0]??"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr3rrPWMpfSEm0gtRGCxJ_fmX0IWv3VotMtHnnSIRMYg&s",
                 );
             },

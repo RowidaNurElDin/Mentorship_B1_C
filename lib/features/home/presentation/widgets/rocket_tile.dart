@@ -42,7 +42,9 @@ class RocketTile extends StatelessWidget {
           bottom: 35.h,
           left: 10.w,
           child: Text(
-          DateFormat('MMM dd, yyyy').format(DateTime.parse(date!)).toString() , style: TextStyle(
+            ''
+          // DateFormat('MMM dd, yyyy').format(DateTime.parse(date!)).toString()
+            , style: TextStyle(
               fontSize: 20.sp,
               color: Color.fromARGB(255, 94, 157, 208),
               fontWeight: FontWeight.bold
