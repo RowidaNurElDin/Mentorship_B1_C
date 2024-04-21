@@ -45,13 +45,13 @@ dependencies:
   flutter_bloc: ^8.1.5
   freezed_annotation: ^2.4.1
   freezed: ^2.5.2
-  intl: ^0.19.0
   image: ^4.1.7
-  google_fonts:
-  auto_size_text:
-  flutter_svg:
-
   smooth_page_indicator: ^1.1.0
+  intl: ^0.19.0
+  json_annotation: ^4.8.1
+  json_serializable: ^6.7.1
+  retrofit: ^4.1.0
+
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +65,11 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   json_serializable: ^6.7.1
   json_annotation: ^4.8.1
+  build_runner: ^2.4.9
+  flutter_gen_runner: ^5.4.0
+  retrofit_generator: ^8.1.0
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

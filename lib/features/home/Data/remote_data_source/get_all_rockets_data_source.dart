@@ -9,7 +9,7 @@ class GetAllRocketsRepository{
   GetAllRocketsRepository();
 
   Future<Either<Failure, List<AllRocketsResponse>?>> getAllRockets() async {
-    return await DioFactory.dio!.get(ApiConstants.apiBaseUrl+ApiConstants.getAllRocketsEndPoint)
+    return await DioFactory.dio!.get(ApiConstants.getAllRocketsEndPoint)
     .then((value){
      if(value.statusCode==200){
     
