@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mentoship_rockets_discovries_project/core/dependency_injection/dependency_injection.dart';
-import 'package:mentoship_rockets_discovries_project/features/home/Logic/cubit/get_all_rockets_cubit.dart';
-import 'package:mentoship_rockets_discovries_project/features/home/presentation/screens/home_screen.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mentoship_rockets_discovries_project/core/helpers/assets_manager.dart';
 import 'package:mentoship_rockets_discovries_project/features/onboard/presentation/screens/onboard_screen.dart';
-import 'core/helpers/strings_manager.dart';
 
 class SpacexApp extends StatelessWidget {
   const SpacexApp({super.key});
@@ -19,7 +14,6 @@ class SpacexApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
-          title: StringsManager.appName,
           debugShowCheckedModeBanner: false,
           home: child,
         );
@@ -31,15 +25,16 @@ class SpacexApp extends StatelessWidget {
           leading: Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Image.asset(
-              'assets/images/spacexlogo.png',
+              AssetsManager.logo
             ),
           ),
         ),
         backgroundColor: Colors.black,
-        body: BlocProvider(
-          create: (context) => getIt<GetAllRocketsCubit>(),
-          child: const HomeScreen(),
-        ),
+        body: OnBoardScreen(),
+        // body: BlocProvider(
+        //   create: (context) => getIt<GetAllRocketsCubit>(),
+        //   child: const HomeScreen(),
+        // ),
       ),
     );
   }

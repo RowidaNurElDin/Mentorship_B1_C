@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mentoship_rockets_discovries_project/main.dart';
 import 'package:mentoship_rockets_discovries_project/spacex_app.dart';
 
 void main() {

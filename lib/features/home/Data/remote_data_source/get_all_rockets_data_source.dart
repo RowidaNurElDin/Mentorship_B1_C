@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:mentoship_rockets_discovries_project/core/networking/api_constants.dart';
-import 'package:mentoship_rockets_discovries_project/core/networking/api_service.dart';
 import 'package:mentoship_rockets_discovries_project/core/networking/dio_factory.dart';
 
 import '../../../../core/helpers/failure_helpers/failure_handler.dart';

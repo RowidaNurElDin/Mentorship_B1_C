@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mentoship_rockets_discovries_project/core/extensions/extensions.dart';
 import 'package:mentoship_rockets_discovries_project/core/helpers/assets_manager.dart';
-import 'package:mentoship_rockets_discovries_project/core/helpers/colors_manager.dart';
-import 'package:mentoship_rockets_discovries_project/core/helpers/fonts_manager.dart';
-import 'package:mentoship_rockets_discovries_project/core/helpers/values_manager.dart';
-import 'package:mentoship_rockets_discovries_project/core/widgets/custom_button.dart';
-import 'package:mentoship_rockets_discovries_project/core/widgets/custom_image.dart';
-import 'package:mentoship_rockets_discovries_project/core/widgets/custom_text.dart';
-import 'package:mentoship_rockets_discovries_project/core/widgets/space.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../../core/dependency_injection/dependency_injection.dart';
+import '../../../home/Logic/cubit/get_all_rockets_cubit.dart';
+import '../../../home/presentation/screens/home_screen.dart';
 
 class OnBoardScreen extends StatelessWidget {
   OnBoardScreen({super.key});
@@ -36,7 +35,7 @@ class OnBoardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsManager.blackLightColor,
+      backgroundColor: Colors.black,
       body: Center(
         child: PageView.builder(
           itemCount: onboardTitles.length,
@@ -48,51 +47,63 @@ class OnBoardScreen extends StatelessWidget {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomImage(
-                  imageUrl: onboardImages[index],
-                  // imageUrl: //     .launcherModel.links!.patch!.small,
-                ),
-                CustomImage(
-                  imageAsset: AssetsManager.logo,
-                  color: ColorsManager.whiteColor,
-                  width: context.screenWidth / 1.5,
-                ),
+                Image.network(onboardImages[index],),
+                SizedBox(
+                    width: context.screenWidth / 1.5,
+                    child: Image.asset(AssetsManager.logo)),
                 SizedBox(
                   width: context.screenWidth / 1.4,
-                  child: CustomText(
+                  child: Text(
                     onboardTitles[index],
-                    color: ColorsManager.whiteColor,
-                    fontSize: FontSize.f18,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.sp,
+                    ),
                   ),
                 ),
-                AppSize.s24.spaceH,
-                CustomButton(
-                  onTap: () {
+                const SizedBox(height: 24,),
+                ElevatedButton(
+                  onPressed: () {
                     if (controller.page! <
                         onboardTitles.length -
                             1.toDouble()) {
                       controller.nextPage(
-                          duration: const Duration(seconds: 1),
+                          duration: const Duration(milliseconds: 500),
                           curve: Curves.easeIn);
                     } else {
-                      // context.push(HomeScreen());
+                       context.push(BlocProvider(
+                         create: (context) => getIt<GetAllRocketsCubit>(),
+                         child: const HomeScreen(),
+                       ),);
                     }
                   },
-                  text: 'Start',
-                  color: ColorsManager.whiteColor,
-                  textColor: ColorsManager.blackColor,
-                  icon: const Icon(
-                    Icons.arrow_forward,
-                    color: ColorsManager.blackColor,
+                  child: SizedBox(
+                    width: 80.w,
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                            'Start',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          )
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                AppSize.s48.spaceH,
+                const SizedBox(height: 24,),
                 SmoothPageIndicator(
                   controller: controller,
                   count: 3,
-                  effect: const WormEffect(
-                    activeDotColor: ColorsManager.whiteColor,
-                    dotColor: ColorsManager.greyLightColor400,
+                  effect:  WormEffect(
+                    activeDotColor: Colors.white,
+                    dotColor: Colors.grey[400]!,
                     dotWidth: 6,
                     dotHeight: 6,
                     spacing: 16,
