@@ -2,30 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mentoship_rockets_discovries_project/core/extensions/extensions.dart';
-import 'package:mentoship_rockets_discovries_project/core/helpers/assets_manager.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
+import 'package:mentoship_rockets_discovries_project/features/onboard/presentation/widgets/logo.dart';
+import 'package:mentoship_rockets_discovries_project/features/onboard/presentation/widgets/onboard_button.dart';
+import 'package:mentoship_rockets_discovries_project/features/onboard/presentation/widgets/onboard_image.dart';
+import 'package:mentoship_rockets_discovries_project/features/onboard/presentation/widgets/onboard_page_indicator.dart';
+import 'package:mentoship_rockets_discovries_project/features/onboard/presentation/widgets/onboard_title.dart';
 import '../../../../core/dependency_injection/dependency_injection.dart';
 import '../../../home/Logic/cubit/get_all_rockets_cubit.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 
+//ignore: must_be_immutable
 class OnBoardScreen extends StatelessWidget {
   OnBoardScreen({super.key});
-
 
   int currentIndex = 0;
   final PageController controller = PageController();
 
   List<String> onboardTitles = [
-    'Discover all upcoming and past rockets launching of SpaceX',
-    'Discover all upcoming and past rockets launching of SpaceX',
-    'Discover all upcoming and past rockets launching of SpaceX',
+    'Explore SpaceX launches: past and future!',
+    'Discover SpaceX\'s rocket launches now!',
+    'Explore SpaceX\'s rocket launches today!',
   ];
   List<String> onboardImages = [
     'https://imgur.com/azYafd8.jpg',
     'https://farm4.staticflickr.com/3955/32915197674_eee74d81bb_b.jpg',
     'https://farm5.staticflickr.com/4599/38583829295_581f34dd84_b.jpg'
-
   ];
 
   changeIndex({required int index}) {
@@ -47,68 +48,40 @@ class OnBoardScreen extends StatelessWidget {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(onboardImages[index],),
+                OnboardImage(image: onboardImages[index]),
+               SizedBox(
+                 height: 16.h,
+               ),
+               const Logo(),
                 SizedBox(
-                    width: context.screenWidth / 1.5,
-                    child: Image.asset(AssetsManager.logo)),
-                SizedBox(
-                  width: context.screenWidth / 1.4,
-                  child: Text(
-                    onboardTitles[index],
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.sp,
-                    ),
-                  ),
+                  height: 16.h,
                 ),
-                const SizedBox(height: 24,),
-                ElevatedButton(
-                  onPressed: () {
+                OnboardTitle(title: onboardTitles[index],),
+                const SizedBox(
+                  height: 24,
+                ),
+                OnboardButton(
+                  onTap: () {
                     if (controller.page! <
-                        onboardTitles.length -
-                            1.toDouble()) {
+                        onboardTitles.length - 1.toDouble()) {
                       controller.nextPage(
                           duration: const Duration(milliseconds: 500),
                           curve: Curves.easeIn);
                     } else {
-                       context.push(BlocProvider(
-                         create: (context) => getIt<GetAllRocketsCubit>(),
-                         child: const HomeScreen(),
-                       ),);
+                      context.push(
+                        BlocProvider(
+                          create: (context) => getIt<GetAllRocketsCubit>(),
+                          child: const HomeScreen(),
+                        ),
+                      );
                     }
                   },
-                  child: SizedBox(
-                    width: 80.w,
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                            'Start',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                          )
-                        ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Colors.black,
-                        ),
-                      ],
-                    ),
-                  ),
+                  title: index == onboardTitles.length -1 ? 'Start' : 'Next',
                 ),
-                const SizedBox(height: 24,),
-                SmoothPageIndicator(
-                  controller: controller,
-                  count: 3,
-                  effect:  WormEffect(
-                    activeDotColor: Colors.white,
-                    dotColor: Colors.grey[400]!,
-                    dotWidth: 6,
-                    dotHeight: 6,
-                    spacing: 16,
-                  ),
+                SizedBox(
+                  height: 32.h,
                 ),
+                OnboardPageIndicator(controller: controller, itemCount: onboardTitles.length),
               ],
             );
           },

@@ -52,6 +52,7 @@ dependencies:
   json_serializable: ^6.7.1
   retrofit: ^4.1.0
   flutter_staggered_animations: ^1.1.1
+  google_fonts: ^6.2.1
 
 
 dev_dependencies:

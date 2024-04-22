@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:mentoship_rockets_discovries_project/features/home/presentation/widgets/rocket_tile_background_image.dart';
 
@@ -29,10 +30,12 @@ class RocketTile extends StatelessWidget {
                 DateFormat('MMM dd, yyyy')
                     .format(DateTime.parse(date!))
                     .toString(),
-                style: TextStyle(
-                    fontSize: 18.sp,
-                    color: const Color.fromARGB(255, 94, 157, 208),
-                    fontWeight: FontWeight.bold),
+
+                style:GoogleFonts.abel().copyWith(
+                  fontSize: 20.sp,
+                  color: const Color.fromARGB(255, 94, 157, 208),
+                  fontWeight: FontWeight.w600,
+                )
               ),
             ),
             Positioned(
@@ -40,7 +43,10 @@ class RocketTile extends StatelessWidget {
               left: 10.w,
               child: Text(
                 name!,
-                style: TextStyle(fontSize: 25.sp, color: Colors.white),
+                style: GoogleFonts.aBeeZee().copyWith(
+                  fontSize: 25.sp,
+                  color: Colors.white,
+                ),
               ),
             )
           ],
