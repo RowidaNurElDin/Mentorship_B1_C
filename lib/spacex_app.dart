@@ -18,24 +18,7 @@ class SpacexApp extends StatelessWidget {
           home: child,
         );
       },
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          leadingWidth: 200,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Image.asset(
-              AssetsManager.logo
-            ),
-          ),
-        ),
-        backgroundColor: Colors.black,
-        body: OnBoardScreen(),
-        // body: BlocProvider(
-        //   create: (context) => getIt<GetAllRocketsCubit>(),
-        //   child: const HomeScreen(),
-        // ),
-      ),
+      child: OnBoardScreen(),
     );
   }
 }

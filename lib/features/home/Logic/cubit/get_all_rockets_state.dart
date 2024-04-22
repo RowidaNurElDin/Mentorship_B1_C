@@ -1,7 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mentoship_rockets_discovries_project/features/home/Data/models/all_rockets_response.dart';
 
 import '../../../../core/helpers/failure_helpers/failure_handler.dart';
+import '../../Data/models/all_rockets_response.dart';
+// import '../../../rocket_details/data/models/all_rockets_response.dart';
 
 part 'get_all_rockets_state.freezed.dart';
 
