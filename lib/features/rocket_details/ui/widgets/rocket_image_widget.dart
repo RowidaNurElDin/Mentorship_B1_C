@@ -5,10 +5,11 @@ import 'details_page_app_bar.dart';
 class RocketImageWidget extends StatelessWidget {
   const RocketImageWidget({
     super.key,
-    required this.imageUrl,
+    required this.imageUrl, required this.title,
   });
 
   final String imageUrl;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +23,10 @@ class RocketImageWidget extends StatelessWidget {
               imageUrl,
             )),
       ),
-      child: const Padding(
-        padding: EdgeInsetsDirectional.only(top: 60, start: 10, end: 10),
+      child:  Padding(
+        padding:const EdgeInsetsDirectional.only(top: 60, start: 10, end: 10),
         child: DetailsPageAppBar(
-          title: 'StarLink Mission',
+          title: title,
           isBookmarked: true,
         ),
       ),
