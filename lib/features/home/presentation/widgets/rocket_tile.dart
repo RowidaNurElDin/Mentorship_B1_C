@@ -10,14 +10,12 @@ class RocketTile extends StatelessWidget {
   final String? date;
   final String? name;
   final String? imageUrl;
-  const RocketTile({super.key, this.date, this.name, this.imageUrl});
-
+  const RocketTile({super.key, this.date, this.name, this.imageUrl, this.onTap});
+final  void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        //TODO : Naviga
-      },
+      onTap:onTap,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 8.w),
         child: Stack(
